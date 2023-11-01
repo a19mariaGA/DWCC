@@ -1,32 +1,32 @@
 
 
 
-let newVentana: Window | null;
-let newpermiso: boolean;
+let newVentana1: Window | null;
+let newpermiso1: boolean;
 
 // En todo momento que la ventana emergente esté abierta
 window.addEventListener('click', function() {
-    if (newVentana && !newVentana.closed) {
-        newVentana.focus();
+    if (newVentana1 && !newVentana1.closed) {
+      newVentana1.focus();
     }
-});
+  });
 
-function abrirVent() {
+function abrirVent1() {
     // Pide permiso al usuario y, solo si lo da, abre la nueva ventana
-    newpermiso = confirm("¿Quieres abrir una nueva ventana?");
+    newpermiso1 = confirm("¿Quieres abrir una nueva ventana?");
 
-    if (newpermiso) {
+    if (newpermiso1) {
         // Método que genera una nueva ventana, contiene la URL, nombre de la ventana y las características.
-        newVentana = window.open("nuevo.html", "nueva", "width=300, height=300, top=400, left=400");
+        newVentana1 = window.open("nuevo2.html", "nueva", "width=300, height=300, top=400, left=400");
     } else {
         alert("Has pulsado cancelar");
     }
 }
 
-function cerrarVent() {
-    if (newVentana) {
-        newVentana.close();
-        newVentana = null;
+function cerrarVent1() {
+    if (newVentana1) {
+        newVentana1.close();
+        newVentana1 = null;
         alert("La ventana se ha cerrado.");
     } else {
         alert("La ventana ya está cerrada.");
@@ -34,34 +34,34 @@ function cerrarVent() {
 }
 
 // Mueve la ventana relativa a su posición actual
-function desplazarVent() {
-    if (newVentana) {
-        newVentana.moveBy(10, -10);
+function desplazarVent1() {
+    if (newVentana1) {
+        newVentana1.moveBy(10, -10);
     } else {
         alert("La ventana está cerrada.");
     }
 }
 
 // Mueve la ventana a una posición absoluta en la pantalla.
-function desplazarVent2() {
-    if (newVentana) {
-        newVentana.moveTo(0, 0);
+function desplazarVent21() {
+    if (newVentana1) {
+        newVentana1.moveTo(0, 0);
     } else {
         alert("La ventana está cerrada.");
     }
 }
 
-function aumentarVent() {
-    if (newVentana) {
-        newVentana.resizeBy(50, 50);
+function aumentarVent1() {
+    if (newVentana1) {
+        newVentana1.resizeBy(50, 50);
     } else {
         alert("La ventana está cerrada.");
     }
 }
 
-function redimensionarVent() {
-    if (newVentana) {
-        newVentana.resizeTo(500, 500);
+function redimensionarVent1() {
+    if (newVentana1) {
+        newVentana1.resizeTo(500, 500);
     } else {
         alert("La ventana está cerrada.");
     }
