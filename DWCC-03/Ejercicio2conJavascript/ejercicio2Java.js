@@ -23,8 +23,7 @@ function diashastafinCurso(){
 
 
 document.write(" </br>"); 
-document.write(" </br>"); 
-document.write(" </br>"); 
+document.write(" </br>");  
 
 //Pide a data do teu aniversario (non fai falla o ano) e saque todos os anos no
 //que o teu aniversario vai caer en fin de semana dende este ano ata o ano 2100.
@@ -53,125 +52,38 @@ function esFindeSemana() {
       }
     }
   }
+  esFindeSemana();
   
+  document.write(" </br>"); 
+  document.write(" </br>"); 
+
+  let opcionFormato = parseInt(prompt("Selecciona un formato de fecha:\n 1. 17/02/2016\n 2. dia de la semana, dia mes año \n 3. Wednesday, February 17, 2016"));
+  var fechaHoy = new Date();
 
 
-/*
-  
+  function formatearFecha(opcion) {
 
-function esFindeSemana(){
-    for (añoActual; añoActual <= 2100; añoActual++) {
-        cumpleaños.setFullYear(añoActual);
-
-        // El domingo es 0 y el sábado 6
-        if (diaSemana === 0 || diaSemana === 6) {
-            añosEnFinSemana.push(añoActual);
-        }
-    }
-
-    return añosEnFinSemana;
-}
-
-const años = esFindeSemana();
-document.write("Los años en los que tu cumpleaños cae en fin de semana hasta el 2100 son: " + años.join(', '));
-
-*/
-
-
-/*
-
-function findAniversarioFinesDeSemana() {
-    const aniversarioStr = prompt("Introduce tu fecha de aniversario (formato MM/DD): ");
-    const aniversario = new Date(new Date().getFullYear(), ...aniversarioStr.split('/').map(e => parseInt(e) - 1));
-
-    for (let year = new Date().getFullYear(); year <= 2100; year++) {
-        aniversario.setFullYear(year);
-
-        const diaSemana = aniversario.getDay();
-        if (diaSemana === 0 || diaSemana === 6) {
-            document.write(`Tu aniversario cae en fin de semana en el año ${year}.`);
-        }
-    }
-    return
-}
-
-
-
-
-
-function calcularDiasRestantes() {
-    const fechaFinDeCurso = new Date(new Date().getFullYear(), 5, 25); // 25 de junio
-    const hoy = new Date();
-
-    const tiempoRestante = fechaFinDeCurso - hoy;
-    const diasRestantes = Math.ceil(tiempoRestante / (1000 * 60 * 60 * 24));
-
-    console.log(`Quedan ${diasRestantes} días hasta el final del curso.`);
-}
-
-function findAniversarioFinesDeSemana() {
-    const aniversarioStr = prompt("Introduce tu fecha de aniversario (formato MM/DD): ");
-    const aniversario = new Date(new Date().getFullYear(), ...aniversarioStr.split('/').map(e => parseInt(e) - 1));
-
-    for (let year = new Date().getFullYear(); year <= 2100; year++) {
-        aniversario.setFullYear(year);
-
-        const diaSemana = aniversario.getDay();
-        if (diaSemana === 0 || diaSemana === 6) {
-            console.log(`Tu aniversario cae en fin de semana en el año ${year}.`);
-        }
-    }
-}
-
-function mostrarFecha(formato) {
-    const options = {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-        weekday: 'long',
-    };
-
-    const fechaActual = new Date();
-
-    switch (formato) {
+    switch (opcion) {
         case 1:
-            console.log(fechaActual.toLocaleDateString('en-US'));
+            // Formato: 17/02/2016
+            document.write(fechaHoy.toLocaleDateString('es-ES'));
             break;
         case 2:
-            console.log(fechaActual.toLocaleDateString('en-US', options));
+            // Formato: Mércores, 17 de febreiro de 2016
+            document.write(fechaHoy.toLocaleDateString('gl-ES', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }));
             break;
         case 3:
-            console.log(fechaActual.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }));
+            // Formato: Wednesday, February 17, 2016
+            document.write(fechaHoy.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }));
             break;
         default:
-            console.log("Formato no válido.");
+            document.write('No ha elegido la opción correcta');
     }
 }
 
-function mostrarHora(formato) {
-    const options = {
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit',
-    };
+// Llamada a la función
+formatearFecha(opcionFormato);
 
-    const horaActual = new Date();
 
-    switch (formato) {
-        case 1:
-            console.log(horaActual.toLocaleTimeString('en-US', options));
-            break;
-        case 2:
-            console.log(horaActual.toLocaleTimeString('en-US', { hour12: true }));
-            break;
-        default:
-            console.log("Formato no válido.");
-    }
-}
-
-// Ejemplos de uso
-calcularDiasRestantes();
-findAniversarioFinesDeSemana();
-mostrarFecha(2);
-mostrarHora(1);
-*/
+document.write(" </br>"); 
+document.write(" </br>"); 
