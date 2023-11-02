@@ -44,7 +44,7 @@ function cerrarVentana() {
 
 function desplazarVentana() {
     if (nuevaVentana) {
-        nuevaVentana.moveBy(10, -10);
+        nuevaVentana.moveBy(250, 250);
     } else {
         alert("La ventana está cerrada.");
     }
