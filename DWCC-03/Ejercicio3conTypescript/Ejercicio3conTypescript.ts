@@ -47,7 +47,7 @@ if (nombreCompleto !== null) {
     document.write("</br>"); 
     document.write("</br>"); 
 } else {
-    document.write("Entrada cancelada por el usuario.");
+    document.write("No ha introduccido ningun nombre.");
 }
 
 let contrasena: string | null = prompt("Introduce tu contraseña:");
@@ -84,5 +84,5 @@ if (contrasena !== null) {
         document.write("<strong>¡La contraseña no es válida!<strong>");
     } 
 } else {
-    document.write("Entrada cancelada por el usuario.");
+    document.write("No ha introducido la contraseña.");
 }
