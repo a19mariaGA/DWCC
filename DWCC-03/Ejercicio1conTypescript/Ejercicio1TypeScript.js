@@ -11,7 +11,7 @@ function abrirVent1() {
     newpermiso1 = confirm("¿Quieres abrir una nueva ventana?");
     if (newpermiso1) {
         // Método que genera una nueva ventana, contiene la URL, nombre de la ventana y las características.
-        newVentana1 = window.open("nuevo2.html", "nueva", "width=300, height=300, top=400, left=400");
+        newVentana1 = window.open("NuevoType.html", "nueva", "width=300, height=300, top=400, left=400");
     }
     else {
         alert("Has pulsado cancelar");
