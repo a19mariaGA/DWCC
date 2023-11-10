@@ -1,6 +1,6 @@
 var nombreCompleto = prompt("Introduce tu nombre y apellidos:");
 // Verifica si el usuario ha cancelado la entrada
-if (nombreCompleto !== null) {
+if (nombreCompleto !== null && nombreCompleto.trim() !== "") {
     var totalNombre = nombreCompleto.length;
     document.write("El total de letras de tu nombre con espacios incluidos es: " + totalNombre);
     document.write("</br>");
@@ -30,11 +30,11 @@ if (nombreCompleto !== null) {
     document.write("</br>");
 }
 else {
-    document.write("No ha introduccido ningun nombre.");
+    document.write("No ha introduccido ningun nombre. </br></br>");
 }
 var contrasena = prompt("Introduce tu contraseña:");
 // Verifica si el usuario ha cancelado la entrada
-if (contrasena !== null) {
+if (contrasena !== null && contrasena.trim() !== "") {
     function validacion(contrasena) {
         // Longitud entre 8 y 16 caracteres
         var longitudValida = contrasena.length >= 8 && contrasena.length <= 16;

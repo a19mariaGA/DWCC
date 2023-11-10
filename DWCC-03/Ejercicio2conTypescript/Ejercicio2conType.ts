@@ -23,7 +23,7 @@ document.write(" </br>");
 // Pide la fecha de tu cumpleaños (no hace falta el año) y muestra todos los años en
 // los que tu cumpleaños va a caer en fin de semana desde este año hasta el año 2100.
 
-let diaCumpleaños: number = parseInt(prompt("¿Qué día es tu cumpleaños?") || "0");
+let diaCumpleaños: number = parseInt(prompt("¿Qué día es tu cumpleaños?") || "1");
 let mesCumpleaños: number = parseInt(prompt("¿Qué mes es tu cumpleaños?") || "0");
 
 // De la fecha actual me quedo solo con el año actual
