@@ -1,5 +1,6 @@
 var newVentana1;
-var newpermiso1;
+var newpermiso1 = false;
+;
 // En todo momento que la ventana emergente esté abierta
 window.addEventListener('click', function () {
     if (newVentana1 && !newVentana1.closed) {
@@ -11,7 +12,7 @@ function abrirVent1() {
     newpermiso1 = confirm("¿Quieres abrir una nueva ventana?");
     if (newpermiso1) {
         // Método que genera una nueva ventana, contiene la URL, nombre de la ventana y las características.
-        newVentana1 = window.open("NuevoType.html", "nueva", "width=300, height=300, top=400, left=400");
+        newVentana1 = window.open("NuevoType.html", "_blank", "width=300, height=300, top=400, left=400");
     }
     else {
         alert("Has pulsado cancelar");
