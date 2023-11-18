@@ -47,3 +47,20 @@ for (let i in paises){
  document.write ( paises[i] + ", ");
 }
 
+//Elimina un elemento ao comezo do Array e indica cal foi.
+
+document.write ("</br>Pais eliminado: "+  paises.shift());
+
+document.write ( "</br>Nueva lista de paises: ");
+for (let i in paises){
+    document.write (  paises[i] + ", ");
+   }
+
+//Elimina un elemento ao final do Array e indica cal foi.
+
+document.write ("</br>Pais eliminado: "+  paises.pop());
+
+document.write ( "</br>Nueva lista de paises: ");
+for (let i in paises){
+    document.write (  paises[i] + ", ");
+   }
