@@ -1,13 +1,13 @@
-// Creamos el array 
+// Creamos el array
 let paises: string[] = ["España", "Italia", "Francia", "Marruecos", "Turkia", "Grecia"];
 
 // Mostrar el número de elementos del Array
-function mostrarNumeroElementos() {
+function mostrarNumeroElementos(): void {
     document.write("El número de elementos que hay en el array es de: " + paises.length + "<br>");
 }
 
 // Mostrar todos los países
-function mostrarPaises() {
+function mostrarPaises(): void {
     for (let i in paises) {
         document.write(paises[i] + ", ");
     }
@@ -15,13 +15,15 @@ function mostrarPaises() {
 }
 
 // Mostrar todos los países en sentido inverso
-function mostrarPaisesInverso() {
-    let paisesInverso = paises.slice().reverse();
+let paisesInverso: string[];
+
+function mostrarPaisesInverso(): void {
+    paisesInverso = paises.slice().reverse();
     document.write(paisesInverso.join(", "));
 }
 
 // Añadir un país al comienzo del Array
-function anadirPaisAlComienzo(pais: string) {
+function anadirPaisAlComienzo(pais: string): void {
     document.write("</br>Ahora el número de paises son: " + paises.unshift(pais) + " = ");
     for (let i in paises) {
         document.write(paises[i] + ", ");
@@ -29,7 +31,7 @@ function anadirPaisAlComienzo(pais: string) {
 }
 
 // Añadir un país al final del Array
-function anadirPaisAlFinal(pais: string) {
+function anadirPaisAlFinal(pais: string): void {
     document.write("</br>Ahora el número de paises son: " + paises.push(pais) + " = ");
     for (let i in paises) {
         document.write(paises[i] + ", ");
@@ -37,7 +39,7 @@ function anadirPaisAlFinal(pais: string) {
 }
 
 // Eliminar un elemento al comienzo del Array e indicar cuál fue
-function eliminarPaisAlComienzo() {
+function eliminarPaisAlComienzo(): void {
     document.write("</br>Pais eliminado: " + paises.shift());
     document.write("</br>Nueva lista de paises: ");
     for (let i in paises) {
@@ -46,7 +48,7 @@ function eliminarPaisAlComienzo() {
 }
 
 // Eliminar un elemento al final del Array e indicar cuál fue
-function eliminarPaisAlFinal() {
+function eliminarPaisAlFinal(): void {
     document.write("</br>Pais eliminado: " + paises.pop());
     document.write("</br>Nueva lista de paises: ");
     for (let i in paises) {
@@ -55,9 +57,11 @@ function eliminarPaisAlFinal() {
 }
 
 // Mostrar el elemento que se encuentre en la posición que el usuario indique
-function mostrarPaisEnPosicion(posicionUsuario: number) {
+let paisEnPosicion: string;
+
+function mostrarPaisEnPosicion(posicionUsuario: number): void {
     if (posicionUsuario >= 0 && posicionUsuario < paises.length) {
-        let paisEnPosicion: string = paises[posicionUsuario];
+        paisEnPosicion = paises[posicionUsuario];
         document.write("</br>El país en la posición " + posicionUsuario + " es: " + paisEnPosicion);
     } else {
         document.write("</br>No hay tantos paises en la lista");
@@ -65,26 +69,31 @@ function mostrarPaisEnPosicion(posicionUsuario: number) {
 }
 
 // Mostrar la posición en la que se encuentra un elemento indicado por el usuario
-function mostrarPosicionPais(paisUsuario: string | null) {
-    let posicion: number = paises.indexOf(paisUsuario || "");
+let posicion: number;
+
+let nombrePaisUsuario = prompt("Introduce el nombre del país que quieres buscar:");
+
+function mostrarPosicionPais(paisUsuario: string): void {
+    posicion = paises.indexOf(paisUsuario || "");
     if (posicion >= 0 && posicion < paises.length) {
         document.write("</br>La posición de " + paisUsuario + " en el array es: " + posicion);
     } else {
-        document.write("</br>" + paisUsuario + " no se encuentra en el array");
+        document.write("</br>" + paisUsuario + " No se encuentra en el array");
     }
 }
 
 // Mostrar los elementos que se encuentran entre dos posiciones indicadas por el usuario
-function mostrarElementosEntrePosiciones(primeraPosicion: number, segundaPosicion: number) {
+let elementosEntrePosiciones: string[];
+
+function mostrarElementosEntrePosiciones(primeraPosicion: number, segundaPosicion: number): void {
     if (primeraPosicion >= 0 && primeraPosicion < paises.length && segundaPosicion >= 0 &&
-        segundaPosicion < paises.length &&  primeraPosicion <= segundaPosicion) {
-        let elementosEntrePosiciones: string [] = paises.slice(primeraPosicion, segundaPosicion + 1);
-        document.write("<br> Los elementos entre las posiciones " +primeraPosicion + " y " + segundaPosicion + " son: "  + elementosEntrePosiciones.join(","));
+        segundaPosicion < paises.length && primeraPosicion <= segundaPosicion) {
+        elementosEntrePosiciones = paises.slice(primeraPosicion, segundaPosicion + 1);
+        document.write("<br> Los elementos entre las posiciones " + primeraPosicion + " y " + segundaPosicion + " son: " + elementosEntrePosiciones.join(","));
     } else {
         document.write("<br> No existen esas posiciones");
     }
 }
-
 
 mostrarNumeroElementos();
 mostrarPaises();
@@ -94,5 +103,5 @@ anadirPaisAlFinal("Alemania");
 eliminarPaisAlComienzo();
 eliminarPaisAlFinal();
 mostrarPaisEnPosicion(parseInt(prompt("Introduce la posición del país que quieres ver:") || "0"));
-mostrarPosicionPais(prompt("Introduce el nombre del país que quieres buscar:"));
+mostrarPosicionPais(nombrePaisUsuario || "");
 mostrarElementosEntrePosiciones(parseInt(prompt("Indique la primera posición:") || "0"), parseInt(prompt("Indique la segunda posición:") || "2"));

@@ -1,4 +1,4 @@
-// Creamos el array 
+// Creamos el array
 var paises = ["España", "Italia", "Francia", "Marruecos", "Turkia", "Grecia"];
 // Mostrar el número de elementos del Array
 function mostrarNumeroElementos() {
@@ -12,8 +12,9 @@ function mostrarPaises() {
     document.write("</br>");
 }
 // Mostrar todos los países en sentido inverso
+var paisesInverso;
 function mostrarPaisesInverso() {
-    var paisesInverso = paises.slice().reverse();
+    paisesInverso = paises.slice().reverse();
     document.write(paisesInverso.join(", "));
 }
 // Añadir un país al comienzo del Array
@@ -47,9 +48,10 @@ function eliminarPaisAlFinal() {
     }
 }
 // Mostrar el elemento que se encuentre en la posición que el usuario indique
+var paisEnPosicion;
 function mostrarPaisEnPosicion(posicionUsuario) {
     if (posicionUsuario >= 0 && posicionUsuario < paises.length) {
-        var paisEnPosicion = paises[posicionUsuario];
+        paisEnPosicion = paises[posicionUsuario];
         document.write("</br>El país en la posición " + posicionUsuario + " es: " + paisEnPosicion);
     }
     else {
@@ -57,8 +59,10 @@ function mostrarPaisEnPosicion(posicionUsuario) {
     }
 }
 // Mostrar la posición en la que se encuentra un elemento indicado por el usuario
+var posicion;
+var nombrePaisUsuario = prompt("Introduce el nombre del país que quieres buscar:");
 function mostrarPosicionPais(paisUsuario) {
-    var posicion = paises.indexOf(paisUsuario || "");
+    posicion = paises.indexOf(paisUsuario || "");
     if (posicion >= 0 && posicion < paises.length) {
         document.write("</br>La posición de " + paisUsuario + " en el array es: " + posicion);
     }
@@ -67,10 +71,11 @@ function mostrarPosicionPais(paisUsuario) {
     }
 }
 // Mostrar los elementos que se encuentran entre dos posiciones indicadas por el usuario
+var elementosEntrePosiciones;
 function mostrarElementosEntrePosiciones(primeraPosicion, segundaPosicion) {
     if (primeraPosicion >= 0 && primeraPosicion < paises.length && segundaPosicion >= 0 &&
         segundaPosicion < paises.length && primeraPosicion <= segundaPosicion) {
-        var elementosEntrePosiciones = paises.slice(primeraPosicion, segundaPosicion + 1);
+        elementosEntrePosiciones = paises.slice(primeraPosicion, segundaPosicion + 1);
         document.write("<br> Los elementos entre las posiciones " + primeraPosicion + " y " + segundaPosicion + " son: " + elementosEntrePosiciones.join(","));
     }
     else {
@@ -85,5 +90,5 @@ anadirPaisAlFinal("Alemania");
 eliminarPaisAlComienzo();
 eliminarPaisAlFinal();
 mostrarPaisEnPosicion(parseInt(prompt("Introduce la posición del país que quieres ver:") || "0"));
-mostrarPosicionPais(prompt("Introduce el nombre del país que quieres buscar:"));
+mostrarPosicionPais(nombrePaisUsuario || "");
 mostrarElementosEntrePosiciones(parseInt(prompt("Indique la primera posición:") || "0"), parseInt(prompt("Indique la segunda posición:") || "2"));

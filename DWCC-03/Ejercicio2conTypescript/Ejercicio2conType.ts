@@ -10,6 +10,7 @@ let finCurso: Date = new Date(2024, 5, 25); // El mes sería 5 pq serían indexa
 let diasqueFaltan: number;
 
 function diashastafinCurso(): number {
+    //Math.ceil , redondea hacia arriba 
     diasqueFaltan = Math.ceil((finCurso.getTime() - fechaActual.getTime()) / (24 * 60 * 60 * 1000));
     return diasqueFaltan;
 }

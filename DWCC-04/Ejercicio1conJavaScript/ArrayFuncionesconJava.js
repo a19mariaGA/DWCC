@@ -22,8 +22,10 @@ function mostrarPaises() {
 
 // Mostrar todos los países en sentido inverso
 
+let paisesInverso;
+
 function mostrarPaisesInverso() {
-  let paisesInverso = paises.slice().reverse();
+  paisesInverso = paises.slice().reverse();
   document.write(paisesInverso + ", ");
   document.write("</br>");
 }
@@ -61,13 +63,16 @@ function eliminarPaisAlFinal() {
 
 
 // Mostrar el elemento que se encuentre en la posición que el usuario indique
+let posicionUsuario;
+let posicion;
+let paisEnPosicion;
 
 function mostrarPaisEnPosicion() {
-  let posicionUsuario = prompt("Introduce la posición del país que quieres ver:");
-  let posicion = parseInt(posicionUsuario);
+    posicionUsuario = prompt("Introduce la posición del país que quieres ver:");
+    posicion = parseInt(posicionUsuario);
 
   if (posicion >= 0 && posicion < paises.length) {
-    let paisEnPosicion = paises[posicion];
+     paisEnPosicion = paises[posicion];
     document.write("</br>El país en la posición " + posicion + " es: " + paisEnPosicion);
   } else {
     document.write("</br>No hay tantos paises en la lista");
@@ -77,9 +82,12 @@ function mostrarPaisEnPosicion() {
 
 // Mostrar la posición en la que se encuentra un elemento indicado por el usuario
 
+let paisUsuario;
+//let posicion;
+
 function mostrarPosicionDePais() {
-  let paisUsuario = prompt("Introduce el nombre del país que quieres buscar:");
-  let posicion = paises.indexOf(paisUsuario);
+   paisUsuario = prompt("Introduce el nombre del país que quieres buscar:");
+   posicion = paises.indexOf(paisUsuario);
 
   if (posicion >= 0 && posicion < paises.length) {
     document.write("</br>La posición de " + paisUsuario + " en el array es: " + posicion);
@@ -90,12 +98,20 @@ function mostrarPosicionDePais() {
 
 // Mostrar los elementos que se encuentran entre dos posiciones indicadas por el usuario
 
-function mostrarElementosEntrePosiciones() {
-  let primeraPosicion = prompt("Indique la primera posición:");
-  let segundaPosicion = prompt("Indique la segunda posición:");
 
-  let posicionInicio = parseInt(primeraPosicion);
-  let posicionFin = parseInt(segundaPosicion);
+let primeraPosicion;
+let segundaPosicion;
+
+let posicionInicio;
+let posicionFin;
+let elementosEntrePosiciones
+
+function mostrarElementosEntrePosiciones() {
+   primeraPosicion = prompt("Indique la primera posición:");
+   segundaPosicion = prompt("Indique la segunda posición:");
+
+   posicionInicio = parseInt(primeraPosicion);
+   posicionFin = parseInt(segundaPosicion);
 
   if (
     posicionInicio >= 0 &&
@@ -104,7 +120,7 @@ function mostrarElementosEntrePosiciones() {
     posicionFin < paises.length &&
     posicionInicio <= posicionFin
   ) {
-    let elementosEntrePosiciones = paises.slice(posicionInicio, posicionFin + 1);
+     elementosEntrePosiciones = paises.slice(posicionInicio, posicionFin + 1);
     document.write("<br> Los elementos entre las posiciones " +primeraPosicion + " y " + segundaPosicion + " son: " + elementosEntrePosiciones + " ");
   } else {
     document.write("<br> No existen las posiciones");

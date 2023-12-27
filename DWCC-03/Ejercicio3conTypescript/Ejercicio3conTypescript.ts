@@ -3,6 +3,7 @@
 let nombreCompleto: string | null = prompt("Introduce tu nombre y apellidos:");
 
 // Verifica si el usuario ha cancelado la entrada
+// trim () eliminar los espacios en blanco al principio y al final de la cadena
 if (nombreCompleto !== null && nombreCompleto.trim() !== "") {
     let totalNombre: number = nombreCompleto.length; 
     document.write("El total de letras de tu nombre con espacios incluidos es: " + totalNombre); 
