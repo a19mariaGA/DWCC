@@ -107,12 +107,3 @@ function mostrarDiscoconGET() {
 mostrarDiscoconGET();
 
 
-document.write("<br> CREAMOS UN DISCO NUEVO A TRAVES DE SET <br> <br>");
-
-
-function crearDiscoconSET(){
-
-
-}
-
-crearDiscoconSET(); 
