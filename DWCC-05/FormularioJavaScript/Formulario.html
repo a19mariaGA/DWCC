@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <title>DWEC05 - FORMULARIOS</title>
+
+
+<script>
+    function setCookie(cname,cvalue,exdays) {
+      const d = new Date();
+      d.setTime(d.getTime() + (exdays*24*60*60*1000));
+      let expires = "expires=" + d.toUTCString();
+      document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+    
+    function getCookie(cname) {
+      let name = cname + "=";
+      let decodedCookie = decodeURIComponent(document.cookie);
+      let ca = decodedCookie.split(';');
+      for(let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') {
+          c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+          return c.substring(name.length, c.length);
+        }
+      }
+      return "";
+    }
+    
+    function checkCookie() {
+      let user = getCookie("username");
+      if (user != "") {
+        alert("Welcome again " + user);
+      } else {
+         user = prompt("Please enter your name:","");
+         if (user != "" && user != null) {
+           setCookie("username", user, 30);
+         }
+      }
+    }
+
+                
+    // borramos la cookie
+    
+    function borrarCookie() {
+            document.cookie = 'username=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/';
+            alert('Cookie borrada');
+        }
+
+    </script>
+
+</head>
+<body onload="checkCookie(), pag() " onunload="despe()"  >
+    <h1>FORMULARIO</h1>
+    <form method="post" id="formulario" name="formulario" onsubmit="return valida(), formul()" >
+        <p id="uno" >
+            <label for="nombre" >Nombre: </label>
+            <input type="text" id="nombre"  onclick="raton()" required><br>
+        </p>
+
+        <p  id="dos">
+            <label for="apellidos">Apellidos: </label>
+            <input type="text" id="apellidos"   onclick="raton()"   required><br>
+        </p>
+
+        <p id="tres">
+            <label for="edad">Edad: </label>
+            <input type="number" id="edad" onclick="raton()"   min="18" max="99" required><br>
+        </p>
+
+        <p id="cuatro">
+            <label for="nif">NIF: </label>
+            <input type="text" id="nif" onclick="raton()" required><br>
+        </p>
+
+        <p id="cinco">
+            <label for="email">Email: </label>
+            <input type="email" id="email"   onclick="raton()"  required><br>
+        </p>
+
+        <p >
+            <label for="provincias">Provincia: </label>
+            <select name="provincias" id="provincias" onchange="cambioSelect()">
+                <option value="CO">Coruña</option>
+                <option value="PO">Pontevedra</option>
+                <option value="LU">Lugo</option>
+                <option value="OU">Ourense</option>
+            </select>
+        </p>
+
+        <p >
+            <label for="contrasinal">Contraseña: </label>
+            <input type="password" id="contrasinal"    required><br>
+        </p>
+
+        <p>
+            <label for="fechaNacimiento">Data de Nacemento: </label>
+            <input type="date" id="fechaNacimiento"  required><br>
+        </p>
+
+        <p >
+            <label for="telefono">Telefono: </label>
+            <input type="tel" id="telefono"   pattern="[0-9]{9}" required><br>
+        </p>
+
+        <p >
+            <label>Vehículos que tienes:</label>
+            <input type="checkbox" id="bicicleta"    name="bicicleta" value="bicicleta"> Bicicleta
+            <input type="checkbox" id="coche"    name="coche" value="coche"> Coche
+            <input type="checkbox" id="moto"   name="moto" value="moto"> Moto<br>
+        </p>
+
+        <p >
+            <p>Linguaxe de programación favorita: </p>
+
+            <input type="radio" id="Java"    name="fav_language" value="Java">
+            <label for="Java">Java</label><br>
+            <input type="radio" id="Python"    name="fav_language" value="Python">
+            <label for="Python">Python </label><br>
+            <input type="radio" id="javascript"    name="fav_language" value="JavaScript">
+            <label for="javascript">JavaScript</label>
+        </p>
+
+        <p >
+            <input type="submit" name="boton" value="Enviar formulario" >
+            
+        </p>
+    </form>
+
+
+    <p>
+        <button onclick="return amosaForm()">Consultar datos enviado</button>
+    </p>
+
+
+    <p >
+
+    <button id="borrarCookie" onclick="borrarCookie()">Borrar Cookie</button>
+
+    </p>
+
+    <div id="mensaxe"></div>
+
+    <script>
+        const formulario = document.getElementById('formulario');
+        formulario.addEventListener('submit', function (event) {
+             event.preventDefault();
+            // Recoger los datos del formulario
+            const nombre = document.getElementById('nombre').value;
+            const apellidos = document.getElementById('apellidos').value;
+            const edad = document.getElementById('edad').value;
+            const nif = document.getElementById('nif').value;
+            const email = document.getElementById('email').value;
+            const provincias = document.getElementById('provincias').value;
+            const contrasinal = document.getElementById('contrasinal').value;
+            const fechaNacimiento = document.getElementById('fechaNacimiento').value;
+            const telefono = document.getElementById('telefono').value;
+            const vehiculos = [];
+            if (document.getElementById('bicicleta').checked) {
+                vehiculos.push('Bicicleta');
+            }
+            if (document.getElementById('coche').checked) {
+                vehiculos.push('Coche');
+            }
+            if (document.getElementById('moto').checked) {
+                vehiculos.push('Moto');
+            }
+            const lenguajeFavorito = document.querySelector('input[name="fav_language"]:checked').value;
+
+            // Validaciones
+            const nifRegex = /^[0-9]{8}[A-Za-z]$/;
+            if (!nifRegex.test(nif)) {
+                alert('El NIF no es válido');
+                return;
+            }
+
+            if (edad < 18 || edad >= 100) {
+                alert('La edad debe estar entre 18 y 99 años');
+                return;
+            }
+
+        });
+
+function amosaForm() {
+    const nombre = document.getElementById("nombre").value;
+    const apellidos = document.getElementById("apellidos").value;
+    const edad = document.getElementById("edad").value;
+    const nif = document.getElementById("nif").value;
+    const email = document.getElementById("email").value;
+    const provincia = document.getElementById("provincias").value;
+    const contrasinal = document.getElementById("contrasinal").value;
+    const fechaNacimiento = document.getElementById("fechaNacimiento").value;
+    const telefono = document.getElementById("telefono").value;
+
+    const vehiculos = [];
+    if (document.getElementById("bicicleta").checked) {
+        vehiculos.push("Bicicleta");
+    }
+    if (document.getElementById("coche").checked) {
+        vehiculos.push("Coche");
+    }
+    if (document.getElementById("moto").checked) {
+        vehiculos.push("Moto");
+    }
+
+    const lenguajeFavorito = document.querySelector(
+        'input[name="fav_language"]:checked'
+    ).value;
+
+    alert(
+        "Datos enviados:\n" +
+        "Nombre: " + nombre +
+        "\nApellidos: " + apellidos +
+        "\nEdad: " + edad +
+        "\nNIF: " + nif +
+        "\nEmail: " + email +
+        "\nProvincia: " + provincia +
+        "\nContraseña: " + contrasinal +
+        "\nFecha de Nacimiento: " + fechaNacimiento +
+        "\nTeléfono: " + telefono +
+        "\nVehículos: " + vehiculos.join(", ") +
+        "\nLenguaje favorito: " + lenguajeFavorito
+    );
+
+
+}
+
+       function valida() {
+            let e = document.getElementById("formulario");
+            let mensaxe = "";
+            if (e.checkValidity()) {
+                mensaxe = "Formulario validado correctamente";
+            } else {
+                mensaxe = e.validationMessage;
+            }
+            document.getElementById("mensaxe").innerHTML = mensaxe;
+        }
+
+
+        function raton() {
+            document.getElementById("uno").style.color = "red";
+        }
+
+
+        function pag() {
+            alert("Pagina cargada");
+        }
+
+        function despe() {
+            console.log("Adios!!!");
+        }
+
+        function cambioSelect() {
+            alert("Ha cambiado la provincia seleccionada: " + document.getElementById("provincias").value);
+        }
+
+        function formul() {
+            alert("Formulario enviado");
+        }
+
+     
+
+    </script>
+</body>
+</html>
