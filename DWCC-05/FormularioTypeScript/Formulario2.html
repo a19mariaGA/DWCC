@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <title>DWEC05 - FORMULARIOS</title>
+    <script  src="Formulario2.js" >
+
+
+    </script>
+
+</head>
+<body onload="checkCookie(), pag() " onunload="despe()"  >
+    <h1>FORMULARIO</h1>
+    <form method="post" id="formulario" name="formulario" onsubmit="return valida(), formul()" >
+        <p id="uno" >
+            <label for="nombre" >Nombre: </label>
+            <input type="text" id="nombre"  onclick="raton()" required><br>
+        </p>
+
+        <p  id="dos">
+            <label for="apellidos">Apellidos: </label>
+            <input type="text" id="apellidos"   onclick="raton()"   required><br>
+        </p>
+
+        <p id="tres">
+            <label for="edad">Edad: </label>
+            <input type="number" id="edad" onclick="raton()"   min="18" max="99" required><br>
+        </p>
+
+        <p id="cuatro">
+            <label for="nif">NIF: </label>
+            <input type="text" id="nif" onclick="raton()" required><br>
+        </p>
+
+        <p id="cinco">
+            <label for="email">Email: </label>
+            <input type="email" id="email"   onclick="raton()"  required><br>
+        </p>
+
+        <p >
+            <label for="provincias">Provincia: </label>
+            <select name="provincias" id="provincias" onchange="cambioSelect()">
+                <option value="CO">Coruña</option>
+                <option value="PO">Pontevedra</option>
+                <option value="LU">Lugo</option>
+                <option value="OU">Ourense</option>
+            </select>
+        </p>
+
+        <p >
+            <label for="contrasinal">Contraseña: </label>
+            <input type="password" id="contrasinal"    required><br>
+        </p>
+
+        <p>
+            <label for="fechaNacimiento">Data de Nacemento: </label>
+            <input type="date" id="fechaNacimiento"  required><br>
+        </p>
+
+        <p >
+            <label for="telefono">Telefono: </label>
+            <input type="tel" id="telefono"   pattern="[0-9]{9}" required><br>
+        </p>
+
+        <p >
+            <label>Vehículos que tienes:</label>
+            <input type="checkbox" id="bicicleta"    name="bicicleta" value="bicicleta"> Bicicleta
+            <input type="checkbox" id="coche"    name="coche" value="coche"> Coche
+            <input type="checkbox" id="moto"   name="moto" value="moto"> Moto<br>
+        </p>
+
+        <p >
+            <p>Linguaxe de programación favorita: </p>
+
+            <input type="radio" id="Java"    name="fav_language" value="Java">
+            <label for="Java">Java</label><br>
+            <input type="radio" id="Python"    name="fav_language" value="Python">
+            <label for="Python">Python </label><br>
+            <input type="radio" id="javascript"    name="fav_language" value="JavaScript">
+            <label for="javascript">JavaScript</label>
+        </p>
+
+        <p >
+            <input type="submit" name="boton" value="Enviar formulario" >
+            
+        </p>
+    </form>
+
+
+    <p>
+        <button onclick="return amosaForm()">Consultar datos enviado</button>
+    </p>
+
+
+    <p >
+
+    <button id="borrarCookie" onclick="borrarCookie()">Borrar Cookie</button>
+
+    </p>
+
+</body>
+</html>
