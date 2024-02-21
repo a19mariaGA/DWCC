@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <title>DWEC06 - FORMULARIOS</title>
+
+</head>
+
+
+<body onload="checkCookie()"   >
+
+    <fieldset id="fil"> 
+        <legend >FORMULARIO DE ALTA </legend>
+    
+
+    <form action="Ejercicio2-06.html"  method="post" id="formulario"   name="formulario" onsubmit="return validarformulario(event)" >
+        <p id="uno" >
+
+            <label for="nombre" >Nombre: </label>
+            <input type="text" id="nombre" name="nombre"  required><br>
+        </p>
+
+        <p  >
+            <label for="apellidos">Apellidos: </label>
+            <input type="text" id="apellidos"  name="apellido"    required><br>
+        </p>
+
+        <p >
+            <label for="edad">Edad: </label>
+            <input type="number"  name="edad" id="edad"   min="18" max="99" required><br>
+        </p>
+
+        <p >
+            <label for="nif">NIF: </label>
+            <input type="text"  name="nif" id="nif"  required><br>
+        </p>
+
+        <p >
+            <label for="email">Email: </label>
+            <input type="email" name="email" id="email"    required><br>
+        </p>
+
+        <p >
+            <label for="provincias">Provincia: </label>
+            <select name="provincias"  name="provincia" id="provincias" onchange="cambioSelect()">
+                <option value="CO">Coruña</option>
+                <option value="PO">Pontevedra</option>
+                <option value="LU">Lugo</option>
+                <option value="OU">Ourense</option>
+            </select>
+        </p>
+
+        <p >
+            <label for="contrasinal">Contraseña: </label>
+            <input type="password"  name="contrasinal" id="contrasinal"    required><br>
+        </p>
+
+        <p>
+            <label for="fechaNacimiento">Data de Nacemento: </label>
+            <input type="date"  name="fechaNacimiento" id="fechaNacimiento"  required><br>
+        </p>
+
+        <p >
+            <label for="telefono">Telefono: </label>
+            <input type="tel"  name="telefono"  id="telefono"   pattern="[0-9]{9}" placeholder="981111222"  required><br>
+        </p>
+
+        <p >
+            <label>Vehículos que tienes:</label>
+            <input type="checkbox" id="bicicleta"    name="bicicleta" value="bicicleta"> Bicicleta
+            <input type="checkbox" id="coche"    name="coche" value="coche"> Coche
+            <input type="checkbox" id="moto"   name="moto" value="moto"> Moto<br>
+        </p>
+
+        <p >
+            <p>Linguaxe de programación favorita: </p>
+
+            <input type="radio" id="Java"    name="fav_language" value="Java">
+            <label class="eleccion" for="Java">Java</label><br>
+            <input type="radio" id="Python"    name="fav_language" value="Python">
+            <label  class="eleccion" for="Python">Python </label><br>
+            <input type="radio" id="javascript"    name="fav_language" value="JavaScript">
+            <label  class="eleccion" for="javascript">JavaScript</label>
+        </p>
+
+        <p >
+            <input type="submit" name="enviar" id="enviar" value ="Enviar"  >  
+            
+        </p>
+
+        </fieldset>
+    </form>
+
+
+    <p>
+        <button type="button" name="consultar" id="consultar" onclick="amosaForm();">Consultar datos enviado</button>
+
+    </p>
+
+
+    <p >
+     
+        <button type="button" name="borrarCookie" id="borrarCookie" onclick="borrarCookie()">Borrar Cookie</button>
+
+
+    </p>
+
+    <div id="mensaxe"></div>
+
+
+    <script  src="Ejercicio2-06.js">
+
+    </script>
+</body>
+</html>
