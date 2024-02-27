@@ -16,7 +16,7 @@ function anadirFrutas(): void {
         document.getElementById("listaFrutas")?.appendChild(nuevaLi);
 
         // lista actualizada 
-        let listaActualizada: HTMLCollectionOf<HTMLLIElement> = document.getElementById('listaFrutas')?.getElementsByTagName('li') || [];
+        let listaActualizada: HTMLCollectionOf<HTMLLIElement> = document.getElementById('listaFrutas')?.getElementsByTagName('li') as HTMLCollectionOf<HTMLLIElement> || [];
 
         for (let i = 0; i < listaActualizada.length; i++) {
             console.log("La nueva lista es: " + listaActualizada[i].textContent);
@@ -38,7 +38,7 @@ function borrarPriFruta(): void {
     }
 
     // lista actualizada
-    let listaActualizada: HTMLCollectionOf<HTMLLIElement> = document.getElementById('listaFrutas')?.getElementsByTagName('li') || [];
+    let listaActualizada: HTMLCollectionOf<HTMLLIElement> = document.getElementById('listaFrutas')?.getElementsByTagName('li') as HTMLCollectionOf<HTMLLIElement> || [];
 
     for (let i = 0; i < listaActualizada.length; i++) {
         console.log("La nueva lista es: " + listaActualizada[i].textContent);
@@ -56,7 +56,7 @@ function borrarUltFruta(): void {
     }
 
     // lista actualizada
-    let listaActualizada: HTMLCollectionOf<HTMLLIElement> = document.getElementById('listaFrutas')?.getElementsByTagName('li') || [];
+    let listaActualizada: HTMLCollectionOf<HTMLLIElement> = document.getElementById('listaFrutas')?.getElementsByTagName('li') as HTMLCollectionOf<HTMLLIElement> || [];
 
     for (let i = 0; i < listaActualizada.length; i++) {
         console.log("La nueva lista es: " + listaActualizada[i].textContent);
