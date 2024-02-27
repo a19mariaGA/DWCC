@@ -17,32 +17,32 @@
         <p id="uno" >
 
             <label for="nombre" >Nombre: </label>
-            <input type="text" id="nombre" name="nombre"  required><br>
+            <input type="text" id="nombre" name="nombre"  onkeydown="cambiarInput(event, 'apellidos')" ><br>
         </p>
 
         <p  >
             <label for="apellidos">Apellidos: </label>
-            <input type="text" id="apellidos"  name="apellido"    required><br>
+            <input type="text" id="apellidos"  name="apellidos"  onkeydown="cambiarInput(event, 'edad')"  ><br>
         </p>
 
         <p >
             <label for="edad">Edad: </label>
-            <input type="number"  name="edad" id="edad"   min="18" max="99" required><br>
+            <input type="number"  name="edad" id="edad"   min="18" max="99" onkeydown="cambiarInput(event, 'nif')" ><br>
         </p>
 
         <p >
             <label for="nif">NIF: </label>
-            <input type="text"  name="nif" id="nif"  required><br>
+            <input type="text"  name="nif" id="nif"    onkeydown="cambiarInput(event, 'email')"><br>
         </p>
 
         <p >
             <label for="email">Email: </label>
-            <input type="email" name="email" id="email"    required><br>
+            <input type="email" name="email" id="email"      onkeydown="cambiarInput(event, 'contrasinal')" ><br>
         </p>
 
         <p >
             <label for="provincias">Provincia: </label>
-            <select name="provincias"  name="provincia" id="provincias" onchange="cambioSelect()">
+            <select name="provincias"  name="provincia" id="provincias" onchange="cambioSelect()"  >
                 <option value="CO">Coruña</option>
                 <option value="PO">Pontevedra</option>
                 <option value="LU">Lugo</option>
@@ -52,17 +52,17 @@
 
         <p >
             <label for="contrasinal">Contraseña: </label>
-            <input type="password"  name="contrasinal" id="contrasinal"    required><br>
+            <input type="password"  name="contrasinal" id="contrasinal"     onkeydown="cambiarInput(event, 'fechaNacimiento')" ><br>
         </p>
 
         <p>
             <label for="fechaNacimiento">Data de Nacemento: </label>
-            <input type="date"  name="fechaNacimiento" id="fechaNacimiento"  required><br>
+            <input type="date"  name="fechaNacimiento" id="fechaNacimiento"    onkeydown="cambiarInput(event, 'telefono')"><br>
         </p>
 
         <p >
             <label for="telefono">Telefono: </label>
-            <input type="tel"  name="telefono"  id="telefono"   pattern="[0-9]{9}" placeholder="981111222"  required><br>
+            <input type="tel"  name="telefono"  id="telefono"   pattern="[0-9]{9}" placeholder="981111222"    onkeydown="cambiarInput(event, 'enviar')"><br>
         </p>
 
         <p >
@@ -84,7 +84,7 @@
         </p>
 
         <p >
-            <input type="submit" name="enviar" id="enviar" value ="Enviar"  >  
+            <input type="submit" name="enviar" id="enviar" value ="Enviar"   >  
             
         </p>
 

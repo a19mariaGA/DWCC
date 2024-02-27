@@ -159,54 +159,11 @@ function cambioSelect() {
     alert("Ha cambiado la provincia seleccionada: " + document.getElementById("provincias").value);
 }
 
-/*
-function validarEnvioFormulario() {
-    // Obtén el formulario por su ID
-    let formulario = document.getElementById('formulario');
 
-    // Verifica si el formulario ha sido enviado
-    if (formulario.submitted) {
-        alert('El formulario ha sido enviado correctamente.');
-    } else {
-        alert('El formulario NO ha sido enviado correctamente..');
+
+function cambiarInput(event, nextInputId) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        document.getElementById(nextInputId).focus();
     }
-}*/
-
-
-/*
-
-document.addEventListener("keydown", cambiarInput);
-const input = document.getElementsByTagName("input")[0]; // Tomamos el primer input
-
-function cambiarInput(e) {
-    let valorHorizontal = parseInt(getComputedStyle(input).getPropertyValue("left"), 10) || 0;
-
-    if (e.key === "ArrowRight") {
-        valorHorizontal += 10;
-        input.style.left = valorHorizontal + "px";
-    } else if (e.key === "ArrowLeft") {
-        valorHorizontal -= 10;
-        input.style.left = valorHorizontal + "px";
-    }
-}*/
-
-
-
-function saltar(e,id)
-{
-	// Obtenemos la tecla pulsada
-	(e.keyCode)?k=e.keyCode:k=e.which;
- 
-	// Si la tecla pulsada es enter (codigo ascii 13)
-	if(k==13)
-	{
-		// Si la variable id contiene "submit" enviamos el formulario
-		if(id=="submit")
-		{
-			document.forms[0].submit();
-		}else{
-			// nos posicionamos en el siguiente input
-			document.getElementById(id).focus();
-		}
-	}
 }
