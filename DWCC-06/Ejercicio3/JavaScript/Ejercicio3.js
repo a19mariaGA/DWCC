@@ -40,7 +40,8 @@
 
     if (listaActual.firstChild) {
         // Elimina el primer elemento li de la lista
-        listaActual.removeChild(listaActual.firstChild);
+        listaActual.removeChild(listaActual.firstElementChild);  
+
     } else {
         alert("No existe ninguna fruta");
     }

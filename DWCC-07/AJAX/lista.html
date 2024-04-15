@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>DWEC07.- Ejemplo jQuery método ajax</title>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript">
+
+        $(() => {
+            
+
+
+            $.ajax({
+                url: 'https://jsonplaceholder.typicode.com/users',
+                type: 'GET',
+                async: true,
+                success: (listarUsuarios)=> {
+					listarUsuarios.forEach(function(user) {
+                        $('#usuarios').append('<li>' + user.id + ' ' + user.name + ' ' + user.username + '</li>');
+                    });		
+            
+                },
+                error: function(jqXHR, status, error) {
+                    console.error("Error:", error);
+                }
+            });
+
+
+			document.getElementById('datos').addEventListener('click', function() {
+                $.ajax({
+                    url: 'https://jsonplaceholder.typicode.com/users',
+                    type: 'GET',
+                    async: true,
+                    success: function(datosCompletos) {
+                       
+                        datosCompletos.forEach(function(user) {
+                            $('#datosCompletos').append('<li>' + JSON.stringify(user) + '</li>');
+                        });
+                    },
+                    error: function(jqXHR, status, error) {
+                        console.error("Error:", error);
+                    }
+                });
+            });
+
+
+			$.ajax({
+                url: 'https://jsonplaceholder.typicode.com/albums',
+                type: 'GET',
+                async: true,
+                success: function(seleccionAlbum) {
+                    var selectAlbum = $("#albumes");
+                    $.each(seleccionAlbum, function(index, album) {
+                        selectAlbum.append($("<option>").text(album.title).attr("value", album.id));
+                    });
+                },
+                error: function(jqXHR, status, error) {
+                    console.error("Error:", error);
+                }
+            });
+
+
+			$("#selectAlbum").change(function() {
+        var albumId = $(this).val();
+        $.ajax({
+			url: 'https://jsonplaceholder.typicode.com/albums',
+            type: 'GET',
+            async: true,
+            success: function(photos) {
+                // Mostrar las primeras 3 fotos del álbum seleccionado
+                for (var i = 0; i < 3; i++) {
+                    console.log("Foto:", photos[i]);
+                }
+            },
+            error: function(jqXHR, status, error) {
+                console.log("Error:", error);
+            }
+        });
+    });
+
+
+
+
+	});
+
+
+    </script>
+</head>
+<body>
+
+    <h2>Usuarios</h2>
+    <ul id="usuarios"></ul>
+
+    <h2>Datos Completos de Usuarios</h2>
+    <ul id="datosCompletos"></ul>
+
+  
+    <button id="datos">Mostrar datos completos de los usuarios</button>
+
+	<h2>Selecciona un Álbum</h2>
+    <select id="albumes">
+        <option value=""> </option>
+    </select>
+	
+	<h2>Fotos del Álbum Seleccionado</h2>
+    <ul id="fotosAlbum"></ul>
+
+</body>
+</html>
