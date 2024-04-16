@@ -18,14 +18,46 @@
         }
     </style>
 
-
     <script type="text/javascript">
-    
+        $(document).ready(function(){
+            // Selecciona las filas impares de la tabla y les aplica un estilo de fondo azul
+            $("tr[class='impar']").css("background-color", "yellow");
+            $("tr[class='par']").css("background-color", "green");
+
+            // Agrega un evento de clic al botón "calcular"
+            $("#calcular").click(function(){
+
+                // Itera sobre cada fila de la tabla, excepto la primera (cabecera)
+                $("#mitabla tr:not(:first-child)").each(function(){
+                    let notas = []; // Almacena las notas de cada alumno
+                    // Itera sobre cada celda de la fila, excepto la primera (nombre del alumno)
+                    $(this).find("td:not(:first-child):not(.media):not(.pondera)").each(function(){
+                        // Convierte el texto de la celda a un número y lo agrega al array de notas
+                        notas.push(parseFloat($(this).text()));
+                    });
+                    // Calcula la media de las notas del alumno
+                    let media = notas.reduce((a, b) => a + b, 0) / notas.length;
+                    // Calcula la ponderación final (20% de la media)
+                    let pondera = media * 0.2;
+
+                    // Actualiza las celdas de la fila con la media y la ponderación
+                    $(this).find(".media").text(media.toFixed(2));
+                    $(this).find(".pondera").text(pondera.toFixed(2));
+
+                    // Define el color del texto de la fila según la nota media
+                    if(media >= 5) {
+                        $(this).css("color", "blue");
+                    } else {
+                        $(this).css({"color": "red", "font-weight": "bold"});
+                    }    
+                });
+            });
+        });
     </script>
 </head>
 <body>
     <table id="mitabla">
-        <tr>
+        <tr class="impar">
           <th></th>
           <th>Tarefa1</th>
           <th>Tarefa2</th>
@@ -35,45 +67,46 @@
           <th>Pondera</th>
         </tr>
 
-        <tr>
+        <tr class="par">
             <th>Alumno1</th>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>5</td>
+            <td>7</td>
+            <td>3</td>
+            <td>8</td>
+            <td class="media"></td>
+            <td class="pondera"></td>
         </tr>
 
-        <tr>
+        <tr class="impar">
             <th>Alumno2</th>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
+            <td class="media"></td>
+            <td class="pondera"></td>
         </tr>
 
-        <tr>
+        <tr class="par">
             <th>Alumno3</th>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>7</td>
+            <td>4</td>
+            <td>8</td>
+            <td>1</td>
+            <td class="media"></td>
+            <td class="pondera"></td>
         </tr>
 
-        <tr>
+        <tr class="impar">
             <th>Alumno4</th>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>7</td>
+            <td>7</td>
+            <td>7</td>
+            <td>7</td>
+            <td class="media"></td>
+            <td class="pondera"></td>
          </tr>
-      </table>
+    </table>
+    <button id="calcular">Calcular media y media ponderada </button>
 </body>
 </html>
