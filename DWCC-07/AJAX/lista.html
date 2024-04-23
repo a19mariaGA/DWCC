@@ -7,34 +7,47 @@
     <script type="text/javascript">
 
         //generar que engloba todas las funciones 
+        // iniciamos un bloque de jQuery  $(() => { ... })
         $(() => {
             
 
             //funcion que muestra los nombres en una lista desordenada
+            //función principal de jQuery para realizar solicitudes AJAX
             $.ajax({
+
+                //url a la que se hace la peticion AJAX
                 url: 'https://jsonplaceholder.typicode.com/users',
                 type: 'GET',
                 async: true,
+
+                //funcion que se ejecutara si no tenemos ningun error
                 success: (listarUsuarios)=> {
-					listarUsuarios.forEach(function(user) {
+                    //la funcion recibe una lista de user que recorremos con un forEach
+					listarUsuarios.forEach(function(user) { 
+                        //.append(...) agrega contenido al final 
+                        // #usuarios es el id del html donde mostraremos los datos
                         $('#usuarios').append('<li>' + user.id + ' ' + user.name + ' ' + user.username + '</li>');
                     });		
             
                 },
+                //funcion que se ejecutara en caso de error
                 error: function(jqXHR, status, error) {
                     console.error("Error:", error);
                 }
             });
 
             // funcion que muestra todos los usuarios
+            //creamos el evento en donde incluiremos la funcion  jQuery para realizar solicitudes AJAX
 			document.getElementById('datos').addEventListener('click', function() {
                 $.ajax({
                     url: 'https://jsonplaceholder.typicode.com/users',
                     type: 'GET',
                     async: true,
-                    success: function(datosCompletos) {
+                    success: (datosCompletos) => {
                        
+                        //volvemos a recibir una lista de usuarios 
                         datosCompletos.forEach(function(user) {
+                            //  JSON.stringify(user) convierte el  objeto user en una cadena de texto JSON 
                             $('#datosCompletos').append('<li>' + JSON.stringify(user) + '</li>');
                         });
                     },
@@ -44,21 +57,24 @@
                 });
             });
 
-            //funcion para seleccionar el album
-			$.ajax({
-                url: 'https://jsonplaceholder.typicode.com/albums',
-                type: 'GET',
-                async: true,
-                success: function(seleccionAlbum) {
-                    var selectAlbum = $("#albumes");
-                    $.each(seleccionAlbum, function(index, album) {
-                        selectAlbum.append($("<option>").text(album.title).attr("value", album.id));
-                    });
-                },
-                error: function(jqXHR, status, error) {
-                    console.error("Error:", error);
-                }
-            });
+        // Función para seleccionar el álbum
+        $.ajax({
+            url: 'https://jsonplaceholder.typicode.com/albums',
+            type: 'GET',
+            async: true,
+            success: (seleccionAlbum) => {
+                // Selecciona el elemento con el id albumes, que es un elemento <select> en el HTML donde se mostrarán los álbumes.
+                var selectAlbum = $("#albumes");
+                // Utiliza forEach para iterar sobre cada álbum en la lista de álbumes
+                seleccionAlbum.forEach(function(album) {
+                    // Agrega una opción al elemento select para cada álbum
+                    selectAlbum.append($("<option>").text(album.title).attr("value", album.id));
+                });
+            },
+            error: function(jqXHR, status, error) {
+                console.error("Error:", error);
+            }
+        });
 
 
       // Función para cargar fotos del álbum seleccionado
