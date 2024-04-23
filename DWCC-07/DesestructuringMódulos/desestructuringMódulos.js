@@ -41,31 +41,33 @@ function Disco(nome, grupo, ano, tipo, prestado) {
   let disco6 = new Disco("Cowboy Carter", "Izal", 2021, "Beyoncé", false);
 
 
-
 //acceder a algunhas das propiedades do obxecto (non todas). Faino usando funcións frecha tamén.
 
 /* He utilizado ya el objeto creado disco3 y utilizando la funcion flecha disco10 accedo a las propiedades
 nombre del disco y nombre del grupo, disco3 es el obj que se pasa como argumento a la funcion, es la
 función la que realiza la desestructuración */
 
+console.log("<br> <br>");
+console.log("LOS DATOS DEL DISCO3 USANDO DESESTRUCTURING: <br><br>");
 
+const {nome, grupo} = disco3;
+console.log(nome + " ");
+console.log(grupo);
 
-
-document.write("<br> <br>");
-document.write("LOS DATOS DEL DISCO3 USANDO DESESTRUCTURING: <br><br>");
+console.log("<br> //////////////////////////////////////////// <br>");
 
 const disco10 = ({nome, grupo}) => `Nome do disco: ${nome}, nome do grupo: ${grupo}`;
-document.write(disco10(disco3));
+console.log(disco10(disco3));
 
 //Fai unha copia dun obxecto.
 /* Utilizamos el operador de propagación (...) y  spread operator para copiar todas las propiedades 
 y valores del objeto disco4 en un nuevo objeto llamado novoDisco4  */
 
-document.write("<br> <br>");
-document.write("UNA COPIA EXACTA DEL DISCO 4: <br><br>");
+console.log("<br> <br>");
+console.log("UNA COPIA EXACTA DEL DISCO 4: <br><br>");
 
 const novoDisco4 = { ...disco4 };
-document.write(novoDisco4.nome, " ", novoDisco4.grupo, " ", novoDisco4.ano, " ", novoDisco4.tipo, " ", novoDisco4.prestado);
+console.log(novoDisco4.nome, " ", novoDisco4.grupo, " ", novoDisco4.ano, " ", novoDisco4.tipo, " ", novoDisco4.prestado);
 
 
 //Fai unha copia dun obxecto e redefine algún valor dalgunha propiedade do obxecto
@@ -73,8 +75,8 @@ document.write(novoDisco4.nome, " ", novoDisco4.grupo, " ", novoDisco4.ano, " ",
 /* Utilizamos el operador de propagación (...) y  spread operator para copiar todas las propiedades
 y luego a cada propiedad le asignamos un nuevo valor  */
 
-document.write("<br> <br>");
-document.write("COPIAMOS Y REDEFINIMOS LOS VALORES EL DISCO 1: <br><br>");
+console.log("<br> <br>");
+console.log("COPIAMOS Y REDEFINIMOS LOS VALORES EL DISCO 1: <br><br>");
 
 const novoDisco1={
   ...disco1,
@@ -85,20 +87,20 @@ const novoDisco1={
   prestado: false
 };
 
-document.write(novoDisco1.nome, " ", novoDisco1.grupo, " ", novoDisco1.ano, " ", novoDisco1.tipo, " ", novoDisco1.prestado);
+console.log(novoDisco1.nome, " ", novoDisco1.grupo, " ", novoDisco1.ano, " ", novoDisco1.tipo, " ", novoDisco1.prestado);
 
 
 //Fai unha copia dun obxecto e redefine algún nome dalgunha propiedade do obxecto.
 
 /* Redifinimos las propiedades nome y grupo del objeto disco1, pasando a ser album y artista   */
 
-document.write("<br> <br>");
-document.write("COPIAMOS Y REDEFINIMOS ALGUNA PROPIEDAD DEL DISCO 1: <br><br>");
+console.log("<br> <br>");
+console.log("COPIAMOS Y REDEFINIMOS ALGUNA PROPIEDAD DEL DISCO 1: <br><br>");
 
 const { nome: album , grupo: artista} = disco1;
 
-document.write("Novo nome para a propiedad nome: album <br>" + "Novo nome para a propiedad grupo: artista <br><br>");
-document.write(album + " " + artista);
+console.log("Novo nome para a propiedad nome: album <br>" + "Novo nome para a propiedad grupo: artista <br><br>");
+console.log(album + " " + artista);
 
 
 
@@ -113,8 +115,8 @@ document.write(album + " " + artista);
     //Usa algún exemplo con desestructuración e for ... of 
 
 
-    document.write("<br> <br>");
-  document.write("DESESTRUCTURACIÓN e for ... of : <br><br>");
+    console.log("<br> <br>");
+    console.log("DESESTRUCTURACIÓN e for ... of : <br><br>");
 
     for (const {
       nome: n,
@@ -123,7 +125,7 @@ document.write(album + " " + artista);
       tipo: t,
       prestado: p
     } of discos) {
-      document.write("Nome: " + n + " Grupo: " + g + " Ano: " + a + " Tipo: " + t + " Prestado: " + (p ? 'Si' : 'No') + "<br>");
+      console.log("Nome: " + n + " Grupo: " + g + " Ano: " + a + " Tipo: " + t + " Prestado: " + (p ? 'Si' : 'No') + "<br>");
     }
 
 
@@ -134,15 +136,15 @@ comezo, polo fin, polo medio,.. */
 
 const [primerDisco, ,tercerDisco , , , ultimoDisco] = discos; // Desestructuración para obtener el primer y último disco
 
-document.write("<br> <br>");
+console.log("<br> <br>");
 const { nome: nombrePrimerDisco, grupo: grupoPrimerDisco , ano: anoPrimerDisco, tipo: tipoPrimerDisco} = primerDisco; // Desestructuración del primer disco
 const { nome: nombreTercerDisco, grupo: grupoTercerDisco , ano: anoTercerDisco, tipo: tipoTercerDisco } = tercerDisco; // Desestructuración del último disco
 const { nome: nombreUltimoDisco, grupo: grupoUltimoDisco , ano: anoUltimoDisco, tipo: tipoUltimoDisco } = ultimoDisco; // Desestructuración del último disco
 
 // Mostramos los valores obtenidos
-document.write("Nombre, grupo, año y tipo del primer disco: ", nombrePrimerDisco, ", ", grupoPrimerDisco, ", ", anoPrimerDisco, ", ", tipoPrimerDisco, "<br>");
-document.write("Nombre, grupo, año y tipo del tercer disco: ", nombreTercerDisco, ", ", grupoTercerDisco, ", ", anoTercerDisco, ", ", tipoTercerDisco, "<br>");
-document.write("Nombre, grupo, año y tipo del último disco: ", nombreUltimoDisco, ", ", grupoUltimoDisco, ", ", anoUltimoDisco, ", ", tipoUltimoDisco, "<br>");
+console.log("Nombre, grupo, año y tipo del primer disco: ", nombrePrimerDisco, ", ", grupoPrimerDisco, ", ", anoPrimerDisco, ", ", tipoPrimerDisco, "<br>");
+console.log("Nombre, grupo, año y tipo del tercer disco: ", nombreTercerDisco, ", ", grupoTercerDisco, ", ", anoTercerDisco, ", ", tipoTercerDisco, "<br>");
+console.log("Nombre, grupo, año y tipo del último disco: ", nombreUltimoDisco, ", ", grupoUltimoDisco, ", ", anoUltimoDisco, ", ", tipoUltimoDisco, "<br>");
 
 
 
