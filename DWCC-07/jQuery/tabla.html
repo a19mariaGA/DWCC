@@ -19,22 +19,35 @@
     </style>
 
     <script type="text/javascript">
-        $(document).ready(function(){
+
+        //jQuery , funcion $() es el alias de jQuery()
+        //$(document).ready(function(){}) nos permite detectar cuando el DOM esta completamente cargado, 
+        // la otra opcion seria: $().ready(() =>{
+
+            $(document).ready(function(){
+
             // Selecciona las filas impares de la tabla y les aplica un estilo de fondo azul
+            // utilizo class para poder repetir seleccion con id no se puede 
+
             $("tr[class='impar']").css("background-color", "yellow");
             $("tr[class='par']").css("background-color", "green");
 
-            // Agrega un evento de clic al botón "calcular"
+            // creamos  un evento de clic al botón "calcular"
             $("#calcular").click(function(){
 
                 // Itera sobre cada fila de la tabla, excepto la primera (cabecera)
                 $("#mitabla tr:not(:first-child)").each(function(){
-                    let notas = []; // Almacena las notas de cada alumno
+
+                    let notas = []; // creamos un array para guardar las notas de cada alumno
+
                     // Itera sobre cada celda de la fila, excepto la primera (nombre del alumno)
+
                     $(this).find("td:not(:first-child):not(.media):not(.pondera)").each(function(){
+
                         // Convierte el texto de la celda a un número y lo agrega al array de notas
                         notas.push(parseFloat($(this).text()));
                     });
+                    
                     // Calcula la media de las notas del alumno
                     let media = notas.reduce((a, b) => a + b, 0) / notas.length;
                     // Calcula la ponderación final (20% de la media)
