@@ -19,6 +19,7 @@
                 url: 'https://jsonplaceholder.typicode.com/users',
                 type: 'GET',
                 async: true,
+                dataType:"json",
 
                 //funcion que se ejecutara si no tenemos ningun error
                 success: (listarUsuarios)=> {
@@ -43,6 +44,7 @@
                     url: 'https://jsonplaceholder.typicode.com/users',
                     type: 'GET',
                     async: true,
+                    dataType:"json",
                     success: (datosCompletos) => {
                        
                         //volvemos a recibir una lista de usuarios 
@@ -57,29 +59,54 @@
                 });
             });
 
-        // Función para seleccionar el álbum
-        $.ajax({
-            url: 'https://jsonplaceholder.typicode.com/albums',
-            type: 'GET',
-            async: true,
-            success: (seleccionAlbum) => {
-                // Selecciona el elemento con el id albumes, que es un elemento <select> en el HTML donde se mostrarán los álbumes.
-                var selectAlbum = $("#albumes");
-                // Utiliza forEach para iterar sobre cada álbum en la lista de álbumes
-                seleccionAlbum.forEach(function(album) {
-                    // Agrega una opción al elemento select para cada álbum
-                    selectAlbum.append($("<option>").text(album.title).attr("value", album.id));
-                });
-            },
-            error: function(jqXHR, status, error) {
-                console.error("Error:", error);
-            }
-        });
+        
+    
+            // creamos una variable para almacenar el userId de cada album 
+            let userId = null;
+
+            $.ajax({
+                url: 'https://jsonplaceholder.typicode.com/albums',
+                type: 'GET',
+                async: true,
+                dataType: "json",
+
+                // recibimos todos los datos de todos los albumes 
+                success: function (seleccionAlbum) {
+                   // seleccionamos el elemento del html 
+                    let selectAlbum = $("#albumes");                  
+                    // recorremos todos los albums
+                    seleccionAlbum.forEach(function (album) { 
+
+                        //igualamos la variable creada al valor que tenga el album seleccionado
+                        userId = album.userId;
+
+                        //rellenamos el select con todos los albumes que hay para poder elegir  uno 
+                        selectAlbum.append($("<option>").text(album.title).attr('data-userid', album.userId));
+                    
+                    });
+
+                    // con change creamos un evento para detectar si se ha seleccionado un album diferente
+                    selectAlbum.change(function (album) {    
+                                        
+                        //igualamos la variable creada al valor que tenga el album seleccionado 
+                        userId = album.userId;
+
+                        let selectedUserId = $(this).find(':selected').attr('data-userid');
+                        console.log("El userId del álbum seleccionado es:", selectedUserId);
+                    });
+                   
+                },
+
+                error: function (jqXHR, status, error) {
+                    console.error("Error:", error);
+                }
+            }); 
 
 
-      // Función para cargar fotos del álbum seleccionado
-      $("#albumes").change(function() {
-                var albumId = $(this).val();
+
+                // Función para cargar fotos del álbum seleccionado
+                $("#albumes").change(function() {
+                     var albumId = $(this).val();
                 $.ajax({
                     url: 'https://jsonplaceholder.typicode.com/photos?albumId=' + albumId,
                     type: 'GET',
@@ -88,19 +115,19 @@
                         $('#fotosAlbum').empty(); // Limpiar las fotos anteriores
                         // Mostrar las primeras 3 fotos del álbum seleccionado
                         for (var i = 0; i < 3; i++) {
-                            $('#fotosAlbum').append('<li> <img src= photos[i].thumbnailUrl > </li>');
+                            $('#fotosAlbum').append('<li> <img src= photos[i].Url > </li>');
                         }
                     },
                     error: function(jqXHR, status, error) {
                         console.error("Error:", error);
                     }
                 });
-            });
+            });
 
 
+});
 
 
-	});
 
 
     </script>
