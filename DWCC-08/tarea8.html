@@ -12,24 +12,31 @@
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    background-color: #f8f8f8;
+    color: #333;
   }
 
   #app {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 10px;
   }
 
   h1 {
-    font-size: 24px;
+    font-size: 36px;
     margin-bottom: 20px;
     text-align: center;
+    color: #333;
   }
 
   h3 {
-    font-size: 20px;
+    font-size: 24px;
     margin-top: 30px;
     margin-bottom: 10px;
+    color: #555;
   }
 
   p {
@@ -44,20 +51,77 @@
 
   th, td {
     border: 1px solid #ddd;
-    padding: 8px;
+    padding: 10px;
     text-align: left;
   }
 
   th {
     background-color: #f2f2f2;
+    text-align: center;
   }
 
   tr:nth-child(even) {
-    background-color: #f2f2f2;
+    background-color: #f9f9f9;
   }
 
+  img {
+    vertical-align: middle;
+    margin-left: 10px;
+  }
 
+  button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
 
+  button:hover {
+    background-color: #45a049;
+  }
+
+  form {
+    margin-top: 20px;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+
+  input[type="text"] {
+    width: calc(100% - 22px);
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+  }
+
+  input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+  input[type="submit"]:hover {
+    background-color: #45a049;
+  }
+
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity 0.5s;
+  }
+
+  .fade-enter, .fade-leave-to {
+    opacity: 0;
+  }
 
 </style>
 </head>
@@ -67,11 +131,15 @@
 <h1>{{ Nombre }}</h1>
 <br><br>
 
-<h3 v-if="ok">Ofertas Flax de hoy </h3>
-<p v-if="hora >= 18">Nuestro pescado del día</p>
-<p v-if="hora >= 12 && hora <= 14">El mejor pan recién hecho</p>
-<p v-if="hora >= 16">Aprovecha nuestra fruta de temporada al mejor precio</p>
-<p v-if="hora >= 20">Todos nuestros yogures al mejor precio</p>
+<h3 v-show="ok">Ofertas del día</h3>
+
+<div v-on:mousemove="colorVal=Math.floor(Math.random()*360)">
+  <p v-if="hora >= 18">Nuestro pescado del día</p>
+  <p v-if="hora >= 12 && hora <= 14">El mejor pan recién hecho</p>
+  <p v-if="hora >= 16">Aprovecha nuestra fruta de temporada al mejor precio</p>
+  <p v-if="hora >= 20">Todos nuestros yogures al mejor precio</p>
+</div>
+
 <br><br>
 
 <h3>Verdura</h3>
@@ -79,8 +147,8 @@
 <table>
     <thead>
       <tr>
-        <th>Nombre</th>
-        <th>Precio</th>
+        <th v-bind:style="{'font-size': size + 'px'}">Nombre</th>
+        <th v-bind:style="{'font-size': size + 'px'}">Precio</th>
       </tr>
     </thead>
     <tbody>
@@ -98,8 +166,25 @@
 
 <br><br>
 
-<button v-on:click="direccion">Donde estamos</button>
+<div>
 
+  <button @click="this.existe = !this.existe"> Necesitas que te llevemos el pedido a casa </button><br><br>
+
+  <transition name="fade">
+    <form v-if="existe" @submit.prevent="enviarPedido">
+      <label for="nombre">Nombre:</label>
+      <input type="text" id="nombre" v-model="nombre">
+      <label for="direccionPersonal">Dirección:</label>
+      <input type="text" id="direccion" v-model="direccionPersonal">
+      <button type="submit">Enviar pedido</button>
+    </form>
+  </transition>
+
+</div>
+
+<br><br>
+
+<button v-on:click="direccion">Donde estamos</button>
 
 </div>
 
