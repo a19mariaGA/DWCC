@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Vue - Ejemplo 01</title>
 <!-- Importamos Vue a través del CDN -->
-<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
 <!-- Estilos CSS -->
 <style>
   body {
@@ -131,6 +131,13 @@
 <h1>{{ Nombre }}</h1>
 <br><br>
 
+
+  <button @click="mostrarPagina = !mostrarPagina">Quieres saber más sobre nosotros</button>
+  <iframe v-if="mostrarPagina"  v-bind:src="html" width="100%" height="600px" frameborder="0"></iframe>
+
+  
+<br><br>
+
 <h3 v-show="ok">Ofertas del día</h3>
 
 <div >
@@ -144,27 +151,9 @@
 
 <h3>Verdura</h3>
 
-<table>
-    <thead>
-      <tr>
-        <th v-bind:style="{'font-size': size + 'px'}">Nombre</th>
-        <th v-bind:style="{'font-size': size + 'px'}">Precio</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr v-for="producto in productos" >
-        <td>
-            {{ producto.nombre }}
-            
-            <img v-bind:src="producto.imagen" alt="producto.nombre" width="50" height="50" >
-            
-        </td>
-        <td>{{ producto.precio }}</td>
-      </tr>
-    </tbody>
-  </table>
 
-  <!-- <productos-tienda></productos-tienda>  -->
+
+ <productos-tienda></productos-tienda>  
 
 
 <br><br>
@@ -196,22 +185,6 @@
 
 <!-- Tu script de Vue.js -->
 <script src="tarea8.js"></script>
-<script src="./components/productosTienda.js"></script>
-<!--
-
-<script>
-  // Registra el componente en tu instancia de Vue
-  const app = Vue.createApp({});
-  app.component('productos-tienda', productosTienda);
-  const mountedApp = app.mount('#app');
-</script>
--->
-
-<script >
-  const mountedApp= App.mount('#app')
-</script> 
-
-
 
 </body>
 </html>
