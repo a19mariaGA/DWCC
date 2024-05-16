@@ -164,9 +164,15 @@
     </tbody>
   </table>
 
+  <!-- <productos-tienda></productos-tienda>  -->
+
+
 <br><br>
 
 <div>
+
+ 
+
 
   <button @click="this.existe = !this.existe"> Necesitas que te llevemos el pedido a casa </button><br><br>
 
@@ -191,8 +197,21 @@
 <!-- Tu script de Vue.js -->
 <script src="tarea8.js"></script>
 <script src="./components/productosTienda.js"></script>
+<!--
+
+<script>
+  // Registra el componente en tu instancia de Vue
+  const app = Vue.createApp({});
+  app.component('productos-tienda', productosTienda);
+  const mountedApp = app.mount('#app');
+</script>
+-->
+
 <script >
   const mountedApp= App.mount('#app')
-</script>
+</script> 
+
+
+
 </body>
 </html>
